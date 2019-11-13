@@ -29,7 +29,6 @@
 	List<MemberBean> list = new ArrayList<>();
 	
 	while(rs.next()){
-		
 		MemberBean mb = new MemberBean();
 		
 		mb.setUid(rs.getString(1));
@@ -53,6 +52,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>14-3</title>
+	
+	
+	
+	
 </head>
 <body>
 	<h3>직원목록</h3>
@@ -79,7 +82,7 @@
 				<td><%= mb.getRdate().substring(2, 10) %></td>
 				<td>
 					<a href="#">수정</a>
-					<a href="#">삭제</a>
+					<a href="./14-4.jsp?uid=<%= mb.getUid() %>">삭제</a>
 				</td>		
 			</tr>
 		<% } %>
