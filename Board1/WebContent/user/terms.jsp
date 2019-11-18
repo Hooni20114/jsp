@@ -1,3 +1,4 @@
+<%@page import="kr.co.board1.bean.BoardTermsBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -24,16 +25,12 @@
 	ResultSet rs = stmt.executeQuery(sql);
 	
 	// 5단계
-	String terms   = null;
-	String privacy = null;
+	BoardTermsBean btb = new BoardTermsBean();
 	
 	if(rs.next()){
-		
-		terms   = rs.getString(1);
-		privacy = rs.getString(2);
-		
+		btb.setTerms(rs.getString(1));
+		btb.setPrivacy(rs.getString(2));
 	}
-	
 	
 	// 6단계
 	rs.close();
@@ -56,7 +53,7 @@
 					<caption>사이트 이용약관</caption>
 					<tr>
 						<td>
-							<textarea readonly><%= terms %></textarea>
+							<textarea readonly><%= btb.getTerms() %></textarea>
 							<div>
 								<label><input type="checkbox" name="chk1" />&nbsp;동의합니다.</label>        
 							</div>
@@ -69,7 +66,7 @@
 					<caption>개인정보 취급방침</caption>
 					<tr>
 						<td>
-							<textarea readonly><%= privacy %></textarea>
+							<textarea readonly><%= btb.getPrivacy() %></textarea>
 							<div>
 								<label><input type="checkbox" name="chk2" />&nbsp;동의합니다.</label>        
 							</div>
