@@ -19,7 +19,6 @@
 	// 3단계
 	Statement stmt = conn.createStatement();
 	
-	
 	// 4단계
 	String sql = "SELECT * FROM `BOARD_TERMS`;";
 	ResultSet rs = stmt.executeQuery(sql);
@@ -43,7 +42,9 @@
 	<head>
 		<meta charset="utf-8">
 		<title>회원약관</title>
-		<link rel="stylesheet" href="/Board1/css/style.css" />		
+		<link rel="stylesheet" href="/Board1/css/style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="/Board1/js/termsCheck.js"></script>
 	</head>
 
 	<body>
@@ -77,7 +78,7 @@
 			
 			<div>
 				<a href="#" class="btnCancel">취소</a>
-				<a href="#" class="btnNext">다음</a>
+				<a href="/Board1/user/register.jsp" class="btnNext">다음</a>
 			</div>
 			
 		</div>
