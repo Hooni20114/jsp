@@ -1,13 +1,52 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("UTF-8");
 
+	String uid   = request.getParameter("uid");
+	String pass1 = request.getParameter("pass1");
+	String name  = request.getParameter("name");
+	String nick  = request.getParameter("nick");
+	String email = request.getParameter("email");
+	String hp	 = request.getParameter("hp");
+	String regip = request.getRemoteAddr();
+
+	// DB정보
+	String host = "jdbc:mysql://192.168.44.9/chhak";
+	String user = "chhak";
+	String pass = "1q2w3e";
+	
 	//1단계
+	Class.forName("com.mysql.jdbc.Driver");
+	
 	//2단계
+	Connection conn = DriverManager.getConnection(host, user, pass);
+	
 	//3단계
+	Statement stmt = conn.createStatement();
+	
 	//4단계
+	String sql  = "INSERT INTO `BOARD_MEMBER` SET ";
+		   sql += "`uid`='"+uid+"',";
+		   sql += "`pass`='"+pass1+"',";
+		   sql += "`name`='"+name+"',";
+		   sql += "`nick`='"+nick+"',";
+		   sql += "`email`='"+email+"',";
+		   sql += "`hp`='"+hp+"',";
+		   sql += "`regip`='"+regip+"',";
+		   sql += "`rdate`=NOW();";
+	
+	stmt.executeUpdate(sql);
+	
 	//5단계
+	
 	//6단계
+	stmt.close();
+	conn.close();
 	
 	// 로그인페이지 이동
-
+	response.sendRedirect("/Board1/user/login.jsp");
+	
 %>
