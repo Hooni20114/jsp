@@ -1,10 +1,22 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String code = request.getParameter("code");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>로그인</title>
 		<link rel="stylesheet" href="/Board1/css/style.css" />
+		<script>
+			var code = "<%= code %>";
+			
+			if(code == '101'){
+				alert('회원정보가 잘못 되었습니다.\n다시 확인하시기 바랍니다.');	
+			}
+		
+		</script>
+		
 	</head>
 	<body>
 		<div id="member">
