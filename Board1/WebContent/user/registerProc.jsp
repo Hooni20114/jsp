@@ -11,6 +11,9 @@
 	String nick  = request.getParameter("nick");
 	String email = request.getParameter("email");
 	String hp	 = request.getParameter("hp");
+	String zip	 = request.getParameter("zip");
+	String addr1 = request.getParameter("addr1");
+	String addr2 = request.getParameter("addr2");
 	String regip = request.getRemoteAddr();
 
 	// DB정보
@@ -35,6 +38,9 @@
 		   sql += "`nick`='"+nick+"',";
 		   sql += "`email`='"+email+"',";
 		   sql += "`hp`='"+hp+"',";
+		   sql += "`zip`='"+zip+"',";
+		   sql += "`addr1`='"+addr1+"',";
+		   sql += "`addr2`='"+addr2+"',";
 		   sql += "`regip`='"+regip+"',";
 		   sql += "`rdate`=NOW();";
 	
