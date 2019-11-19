@@ -4,12 +4,18 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>회원가입</title>
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 		<link rel="stylesheet" href="/Board1/css/style.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>		
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script src="/Board1/js/validation.js"></script>
+		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script src="/Board1/js/zipcode.js"></script>
 	</head>
 	<body>
 		<div id="member">
 			<section class="register">
-				<form action="/Board1/user/registerProc.jsp" method="POST">
+				<form id="regForm" action="/Board1/user/registerProc.jsp" method="POST">
 					<section>
 						<table>
 							<caption>사이트 이용정보 입력</caption>
@@ -60,7 +66,7 @@
 								<td>
 									<div>
 										<input type="text" name="zip" id="zip" placeholder="우편번호" readonly />
-										<button type="button" class="btnFind">주소검색</button>
+										<button type="button" onclick="zipcode()" class="btnFind">주소검색</button>
 									</div>
 									<div>
 										<input type="text" name="addr1" id="addr1" size="50" placeholder="주소를 검색하세요." readonly />

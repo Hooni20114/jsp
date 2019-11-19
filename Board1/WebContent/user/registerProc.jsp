@@ -30,7 +30,7 @@
 	//4단계
 	String sql  = "INSERT INTO `BOARD_MEMBER` SET ";
 		   sql += "`uid`='"+uid+"',";
-		   sql += "`pass`='"+pass1+"',";
+		   sql += "`pass`=PASSWORD('"+pass1+"'),";
 		   sql += "`name`='"+name+"',";
 		   sql += "`nick`='"+nick+"',";
 		   sql += "`email`='"+email+"',";

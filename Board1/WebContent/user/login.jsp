@@ -12,11 +12,11 @@
 				<form action="#" method="get">
 					<table>
 						<tr>
-							<td><img src="../img/login_ico_id.png" alt="아이디" /></td>
+							<td><img src="/Board1/img/login_ico_id.png" alt="아이디" /></td>
 							<td><input type="text" name="uid" required placeholder="아이디 입력" autocomplete="off" /></td>
 						</tr>
 						<tr>
-							<td><img src="../img/login_ico_pw.png" alt="비밀번호" /></td>
+							<td><img src="/Board1/img/login_ico_pw.png" alt="비밀번호" /></td>
 							<td><input type="password" name="pass" required placeholder="비밀번호 입력" /></td>
 						</tr>
 					</table>
