@@ -11,6 +11,34 @@
 		<script src="/Board1/js/validation.js"></script>
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script src="/Board1/js/zipcode.js"></script>
+		<script>
+		
+			$(function(){
+				
+				$('input[name=uid]').focusout(function(){
+					
+					var uid = $(this).val();
+					
+					$.ajax({
+						url: '/Board1/user/checkUidProc.jsp?uid='+uid,
+						type: 'get',
+						dataType: 'json',
+						success: function( data ){
+							
+							alert(data.result);
+							
+						}
+					});
+					
+				});
+				
+				
+			});
+		
+		</script>
+		
+		
+		
 	</head>
 	<body>
 		<div id="member">
