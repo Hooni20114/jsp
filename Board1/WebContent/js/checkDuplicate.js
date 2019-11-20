@@ -14,7 +14,7 @@ $(function(){
 		var value = tag.val();
 		
 		$.ajax({
-			url: '/Board1/user/checkDuplicate.jsp?type='+type+'&value='+value,
+			url: '/Board1/user/checkDuplicateProc.jsp?type='+type+'&value='+value,
 			type: 'get',
 			dataType: 'json',
 			success: function( data ){							
