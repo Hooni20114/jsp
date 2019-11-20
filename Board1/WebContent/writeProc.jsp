@@ -1,3 +1,6 @@
+<%@page import="kr.co.board1.config.SQL"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="kr.co.board1.config.DBConfig"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -13,36 +16,25 @@
 	BoardMemberBean bmb = (BoardMemberBean)session.getAttribute("member");
 	String uid = bmb.getUid();
 
-	// DB정보
-	String host = "jdbc:mysql://192.168.44.9/chhak";
-	String user = "chhak";
-	String pass = "1q2w3e";
-	
-	//1단계
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	//2단계
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	// 1단계, 2단계
+	Connection conn = DBConfig.getConnection();
 	
 	//3단계
-	Statement stmt = conn.createStatement();
+	PreparedStatement psmt = conn.prepareStatement(SQL.INSERT_ARTICLE);
+	psmt.setInt(1, 0); 			//parent
+	psmt.setString(2, "free"); 	//cate
+	psmt.setString(3, title); 	//title
+	psmt.setString(4, content); //content
+	psmt.setInt(5, 0); 			//file
+	psmt.setString(6, uid); 	//uid
+	psmt.setString(7, regip); 	//regip
 	
 	// 4단계
-	String sql  = "INSERT INTO `BOARD_ARTICLE` SET ";		
-	       sql += "`parent`=0,";
-	       sql += "`cate`='free',";
-	       sql += "`title`='"+title+"',";
-	       sql += "`content`='"+content+"',";
-	       sql += "`file`=0,";
-	       sql += "`uid`='"+uid+"',";
-	       sql += "`regip`='"+regip+"',";
-	       sql += "`rdate`=NOW();";
-	
-	stmt.executeUpdate(sql);	       
+	psmt.executeUpdate();	       
 	       
 	// 5단계
 	// 6단계
-	stmt.close();
+	psmt.close();
 	conn.close();
 
 	// 리스트페이지 이동

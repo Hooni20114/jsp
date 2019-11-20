@@ -1,3 +1,5 @@
+<%@page import="kr.co.board1.config.SQL"%>
+<%@page import="kr.co.board1.config.DBConfig"%>
 <%@page import="kr.co.board1.bean.BoardTermsBean"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -5,23 +7,14 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	// DB정보
-	String host = "jdbc:mysql://192.168.44.9/chhak";
-	String user = "chhak";
-	String pass = "1q2w3e";
-
-	// 1단계
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	// 2단계
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	//1단계, 2단계
+	Connection conn = DBConfig.getConnection();
 	
 	// 3단계
 	Statement stmt = conn.createStatement();
 	
 	// 4단계
-	String sql = "SELECT * FROM `BOARD_TERMS`;";
-	ResultSet rs = stmt.executeQuery(sql);
+	ResultSet rs = stmt.executeQuery(SQL.SELECT_TERMS);
 	
 	// 5단계
 	BoardTermsBean btb = new BoardTermsBean();

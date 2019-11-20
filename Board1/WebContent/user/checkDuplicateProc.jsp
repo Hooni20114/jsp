@@ -1,3 +1,6 @@
+<%@page import="kr.co.board1.config.SQL"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="kr.co.board1.config.DBConfig"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -9,34 +12,26 @@
 	String type  = request.getParameter("type");
 	String value = request.getParameter("value");
 
-	//DB정보
-	String host = "jdbc:mysql://192.168.44.9/chhak";
-	String user = "chhak";
-	String pass = "1q2w3e";
-
-	// 1단계
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	// 2단계
-	Connection conn = DriverManager.getConnection(host, user, pass);
+	// 1단계, 2단계
+	Connection conn = DBConfig.getConnection();
 	
 	// 3단계
-	Statement stmt = conn.createStatement();
+	PreparedStatement psmt = null;
+	
+	if(type.equals("uid")){
+		psmt = conn.prepareStatement(SQL.SELECT_CHECK_UID);
+	}else if(type.equals("nick")){
+		psmt = conn.prepareStatement(SQL.SELECT_CHECK_NICK);
+	}else if(type.equals("hp")){
+		psmt = conn.prepareStatement(SQL.SELECT_CHECK_HP);
+	}else if(type.equals("email")){
+		psmt = conn.prepareStatement(SQL.SELECT_CHECK_EMAIL);
+	}
+	 
+	psmt.setString(1, value);
 	
 	// 4단계
-	String sql = "SELECT COUNT(*) FROM `BOARD_MEMBER` ";
-	if(type.equals("uid")){
-		sql += "WHERE `uid`='"+value+"'";
-	}else if(type.equals("nick")){
-		sql += "WHERE `nick`='"+value+"'";
-	}else if(type.equals("hp")){
-		sql += "WHERE `hp`='"+value+"'";
-	}else if(type.equals("email")){
-		sql += "WHERE `email`='"+value+"'";
-	}
-	
-	
-	ResultSet rs = stmt.executeQuery(sql);
+	ResultSet rs = psmt.executeQuery();
 	
 	// 5단계
 	JSONObject json = new JSONObject(); 
@@ -47,7 +42,7 @@
 	
 	// 6단계
 	rs.close();
-	stmt.close();
+	psmt.close();
 	conn.close();
 
 	// json 출력
