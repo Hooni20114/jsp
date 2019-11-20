@@ -28,11 +28,11 @@
 	if(type.equals("uid")){
 		sql += "WHERE `uid`='"+value+"'";
 	}else if(type.equals("nick")){
-		sql += "WHERE `uid`='"+value+"'";
+		sql += "WHERE `nick`='"+value+"'";
 	}else if(type.equals("hp")){
-		sql += "WHERE `uid`='"+value+"'";
+		sql += "WHERE `hp`='"+value+"'";
 	}else if(type.equals("email")){
-		sql += "WHERE `uid`='"+value+"'";
+		sql += "WHERE `email`='"+value+"'";
 	}
 	
 	
