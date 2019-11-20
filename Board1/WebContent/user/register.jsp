@@ -11,34 +11,7 @@
 		<script src="/Board1/js/validation.js"></script>
 		<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script src="/Board1/js/zipcode.js"></script>
-		<script>
-		
-			$(function(){
-				
-				$('input[name=uid]').focusout(function(){
-					
-					var uid = $(this).val();
-					
-					$.ajax({
-						url: '/Board1/user/checkUidProc.jsp?uid='+uid,
-						type: 'get',
-						dataType: 'json',
-						success: function( data ){
-							
-							alert(data.result);
-							
-						}
-					});
-					
-				});
-				
-				
-			});
-		
-		</script>
-		
-		
-		
+		<script src="/Board1/js/checkDuplicate.js"></script>
 	</head>
 	<body>
 		<div id="member">
@@ -50,7 +23,7 @@
 							<tr>
 								<td>아이디</td>
 								<td>
-									<input type="text" name="uid" placeholder="아이디를 입력" required />
+									<input type="text" name="uid" class="checkDp" placeholder="아이디를 입력" required />
 									<span class="resultId"></span>
 								</td>
 							</tr>
@@ -76,18 +49,25 @@
 								<td>
 									<span class="info">공백없이 한글, 영문, 숫자만 입력가능</span>
 									<div>
-										<input type="text" name="nick" placeholder="별명을 입력" required />
+										<input type="text" name="nick" class="checkDp" placeholder="별명을 입력" required />
+										<span class="resultNick"></span>
 									</div>
-									<span class="resultNick"></span>
+									
 								</td>
 							</tr>
 							<tr>
 								<td>EMAIL</td>
-								<td><input type="email" name="email" placeholder="이메일을 입력" 	required /></td>
+								<td>
+									<input type="email" name="email" class="checkDp" placeholder="이메일을 입력" required />
+									<span class="resultEmail"></span>
+								</td>
 							</tr>
 							<tr>
 								<td>휴대폰</td>
-								<td><input type="text" name="hp" placeholder="-포함 13자리를 입력" maxlength="13" required /></td>
+								<td>
+									<input type="text" name="hp" class="checkDp" placeholder="-포함 13자리를 입력" maxlength="13" required />
+									<span class="resultHp"></span>
+								</td>
 							</tr>
 							<tr>
 								<td>주소</td>
