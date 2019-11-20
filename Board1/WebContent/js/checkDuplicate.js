@@ -13,6 +13,11 @@ $(function(){
 		var type  = tag.attr('name');
 		var value = tag.val();
 		
+		if(value == ''){
+			// 값을 입력하지 않으면 서버로 통신하지 않음
+			return false;
+		}
+		
 		$.ajax({
 			url: '/Board1/user/checkDuplicateProc.jsp?type='+type+'&value='+value,
 			type: 'get',
