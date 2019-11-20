@@ -35,7 +35,7 @@
 		   sql += "`dep`="+dep+", ";
 		   sql += "`rdate`='"+rdate+"';";
 	
-	stmt.executeUpdate(sql);
+	int result = stmt.executeUpdate(sql);
 	
 	// 5단계
 	
@@ -44,7 +44,7 @@
 	conn.close();
 	
 	JSONObject json = new JSONObject();
-	json.put("result", 1);
+	json.put("result", result);
 	
 	out.print(json);
 %>
