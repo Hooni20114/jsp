@@ -10,7 +10,7 @@
 	//DB정보
 	String host = "jdbc:mysql://192.168.44.9/chhak";
 	String user = "chhak";
-	String pass = "1q2w3e";
+	String pass = "1234";
 
 	// 1단계
 	Class.forName("com.mysql.jdbc.Driver");
