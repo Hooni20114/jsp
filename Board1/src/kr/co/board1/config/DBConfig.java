@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class DBConfig {
 	
 	//DBÁ¤º¸
-	private static final String HOST = "jdbc:mysql://192.168.44.9/chhak";
+	private static final String HOST = "jdbc:mysql://192.168.44.3/chhak";
 	private static final String USER = "chhak";
-	private static final String PASS = "12345";
+	private static final String PASS = "1234";
 	
 	public static Connection getConnection() throws Exception {
 		
